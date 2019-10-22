@@ -40,4 +40,24 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['deleted_at'];
+
+
+
+    public function isAdmin()
+    {
+        if ($this->role == 'admin') {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isStockis()
+    {
+        if ($this->role == 'stockis') {
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -17,4 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('/', 'HomeController@index')->name('home.index');
+    
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth.isAdmin'], function() {
+        Route::get('/', 'HomeController@index')->name('home.index');
+    });
+    
+    Route::group(['prefix' => 'warehouse', 'middleware' => 'auth.isStockis'], function() {
+        Route::get('/', 'HomeController@index')->name('home.index');
+    });
+});
