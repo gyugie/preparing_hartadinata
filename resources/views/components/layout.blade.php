@@ -36,7 +36,8 @@
         <ul class="navbar-nav bg-gradient-_primary sidebar sidebar-light accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="{{ route('dashboard.index') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-cart-plus"></i>
                 </div>
@@ -47,13 +48,13 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-            <a class="nav-link" href="{{ route('dashboard.index') }}">
+            <li class="nav-item {{ Request::segment(1) === 'dashboard' ? 'active' : null }}">
+                <a class="nav-link" href="{{ route('dashboard.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ Request::segment(1) === 'inventory' ? 'active' : null }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#inventoryModules"
                     aria-expanded="true" aria-controls="inventoryModules">
                     <i class="fas fa-fw fa-warehouse"></i>
@@ -62,7 +63,8 @@
                 <div id="inventoryModules" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('inventory.items_management.index') }}">Items Management</a>
+                        <a class="collapse-item" href="{{ route('inventory.items_management.index') }}">Items
+                            Management</a>
                         <a class="collapse-item" href="#">Stock Opname</a>
                         <a class="collapse-item" href="#">Stock Movement</a>
                         <a class="collapse-item" href="#">Items Request</a>
@@ -71,7 +73,7 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ Request::segment(1) === 'sales' ? 'active' : null }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#salesModules"
                     aria-expanded="true" aria-controls="salesModules">
                     <i class="fas fa-fw fa-shopping-cart"></i>
@@ -87,7 +89,7 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ Request::segment(1) === 'maintenance' ? 'active' : null }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#maintenanceModules"
                     aria-expanded="true" aria-controls="maintenanceModules">
                     <i class="fas fa-fw fa-cog"></i>
@@ -102,7 +104,7 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ Request::segment(1) === 'clustering' ? 'active' : null }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#clusteringModules"
                     aria-expanded="true" aria-controls="clusteringModules">
                     <i class="fas fa-fw fa-project-diagram"></i>
@@ -119,7 +121,7 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item {{ Request::segment(1) === 'report' ? 'active' : null }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportModules"
                     aria-expanded="true" aria-controls="reportModules">
                     <i class="fas fa-fw fa-file"></i>
@@ -250,13 +252,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0">
-                            @yield('title')
-                        </h1>
-                        @yield('btn-add')
-                    </div>
+                    @yield('heading')
 
                     @yield('content')
 

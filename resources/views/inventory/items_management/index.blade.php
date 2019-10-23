@@ -1,9 +1,7 @@
 @extends('components.layout')
 
-@section('title', 'Items Management')
-
-@section('btn-add')
-    @component('components._btn-add', ['title' => 'Add New Inventory', 'url' => route('inventory.items_management.index')])
+@section('heading')
+    @component('components._page_heading', ['title' => 'Items Management', 'url' => route('inventory.items_management.index'), 'name' => 'Add New Inventory'])
     @endcomponent
 @endsection
 

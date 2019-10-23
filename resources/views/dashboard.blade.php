@@ -1,6 +1,9 @@
 @extends('components.layout')
 
-@section('title', 'Dashboard')
+@section('heading')
+    @component('components._page_heading', ['title' => 'Dashboard'])
+    @endcomponent
+@endsection
 
 @section('content')
 <!-- Content Row -->
