@@ -3,9 +3,8 @@
 @section('title', 'Items Management')
 
 @section('btn-add')
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-_primary shadow-sm">
-    <i class="fas fa-plus fa-sm"></i> Add New Inventory
-</a>
+    @component('components._btn-add', ['title' => 'Add New Inventory', 'url' => route('inventory.items_management.index')])
+    @endcomponent
 @endsection
 
 @section('content')
